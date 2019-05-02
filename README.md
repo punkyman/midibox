@@ -1,1 +1,28 @@
 # midibox
+
+pinout :
+
+MIDI
+RX : 0
+
+1602 I2C
+SDA : 2
+SCL : 3
+
+INPUTS
+UP : 4
+DWN : 5
+LFT: 6
+RHT : 7
+MID : 8
+SET : 9
+
+VS1053
+CS : 10
+MISO : 14
+MOSI : 16
+SCK : 15
+XCS : 18
+XRESET : 19
+XDCS : 20
+DREQ : 21
