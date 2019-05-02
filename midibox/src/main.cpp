@@ -4,6 +4,7 @@
 #include "modules/display.h"
 #include "modules/midi.h"
 #include "modules/input.h"
+#include "modules/storage.h"
 
 void setup()
 {
@@ -11,6 +12,7 @@ void setup()
   Display::Init();
   Midi::Init();
   Input::Init();
+  Storage::Init();
 }
 
 void loop()
