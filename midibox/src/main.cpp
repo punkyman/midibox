@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <MemoryFree.h>
 
 #include "modules/audio.h"
 #include "modules/display.h"
@@ -25,4 +26,5 @@ void loop()
   {
     Serial.println(Storage::GetFileName(i));
   }
+  Serial.println(freeMemory());
 }
