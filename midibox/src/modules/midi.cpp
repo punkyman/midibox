@@ -3,5 +3,5 @@
 
 void Midi::Init()
 {
-    Serial.begin(31250);
+    Serial1.begin(31250);
 }

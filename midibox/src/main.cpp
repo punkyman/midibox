@@ -8,7 +8,9 @@
 
 void setup()
 {
-  Audio::Init();
+  Serial.begin(9600);
+
+//  Audio::Init();
   Display::Init();
   Midi::Init();
   Input::Init();
@@ -17,4 +19,10 @@ void setup()
 
 void loop()
 {
+  Serial.println("prout");
+  Storage::PopulateFilesFromDirectory("/");
+  for(uint8_t i = 0; i < Storage::GetFilesNumber(); ++i)
+  {
+    Serial.println(Storage::GetFileName(i));
+  }
 }
