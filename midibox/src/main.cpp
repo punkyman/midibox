@@ -11,20 +11,20 @@ void setup()
 {
   Serial.begin(9600);
 
-//  Audio::Init();
-  Display::Init();
+  //  Audio::Init();
+  //  Display::Init();
   Midi::Init();
-  Input::Init();
-  Storage::Init();
+  //  Input::Init();
+  //  Storage::Init();
+
+  //  Serial.println("prout");
 }
 
 void loop()
 {
-  Serial.println("prout");
-  Storage::PopulateFilesFromDirectory("/");
-  for(uint8_t i = 0; i < Storage::GetFilesNumber(); ++i)
+  while (Midi::Available())
   {
-    Serial.println(Storage::GetFileName(i));
+    Midi::Message msg = Midi::Read();
+    Midi::PrintMessage(msg);
   }
-  Serial.println(freeMemory());
 }
