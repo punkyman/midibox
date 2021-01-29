@@ -6,18 +6,16 @@
 #include "modules/midi.h"
 #include "modules/input.h"
 #include "modules/storage.h"
+#include "modules/console.h"
 
 void setup()
 {
-  Serial.begin(9600);
-
-  //  Audio::Init();
+  Console::Init();
+  Audio::Init();
   //  Display::Init();
   Midi::Init();
   //  Input::Init();
   //  Storage::Init();
-
-  //  Serial.println("prout");
 }
 
 void loop()
@@ -26,5 +24,10 @@ void loop()
   {
     Midi::Message msg = Midi::Read();
     Midi::PrintMessage(msg);
+
+    if(msg.info.infos.id == Midi::MessageType::NOTE_ON)
+      Audio::MidiNoteOn(0, msg.data1.infos.value);
+    else if(msg.info.infos.id == Midi::MessageType::NOTE_OFF)
+      Audio::MidiNoteOff(0, msg.data1.infos.value);
   }
 }
