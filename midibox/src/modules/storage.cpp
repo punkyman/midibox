@@ -50,7 +50,7 @@ void printDirectory(File dir, int numTabs) {
 
 void Storage::Init()
 {
-  SD.begin(SPI_CLOCK_DIV16 /* 1MHZ */ , PIN_AUDIO_CS);
+  SD.begin(SPI_CLOCK_DIV16 /* 1MHZ */ , PIN_AUDIO_SDCARD_CS);
 }
 
 uint8_t Storage::GetFilesNumber()

@@ -16,7 +16,7 @@ const uint8_t PIN_INPUT_SET = 9;
 const uint8_t ADDR_I2C_LCD = 0x27;
 
 // audio component http://www.geeetech.com/wiki/index.php/VS1053_MP3_breakout_board_with_SD_card
-const uint8_t PIN_AUDIO_CS = 10; // for VS1053 / sd selection
+const uint8_t PIN_AUDIO_SDCARD_CS = 10; // for VS1053 / sd selection
 const uint8_t PIN_AUDIO_XCS = 18;
 const uint8_t PIN_AUDIO_XRESET = 19;
 const uint8_t PIN_AUDIO_XDCS = 20;
