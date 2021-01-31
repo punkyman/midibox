@@ -26,6 +26,8 @@ void Audio::SetVolume(uint8_t volume)
 
 int Audio::Process(Midi::Message msg)
 {
+    uint8_t control;
+
     switch(msg.info.infos.id)
     {
         case Midi::MessageType::NOTE_ON:
@@ -38,7 +40,7 @@ int Audio::Process(Midi::Message msg)
             midi.pitchBend(msg.info.infos.channel, msg.data1.infos.value, msg.data2.infos.value);
             return 0;
         case Midi::MessageType::CONTROL_CHANGE:
-            uint8_t control = msg.data1.infos.value;
+            control = msg.data1.infos.value;
             if(control == 1) // mod wheel
             {
                 midi.setReverbLevel(msg.info.infos.channel, msg.data2.infos.value);
