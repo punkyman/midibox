@@ -1,6 +1,7 @@
 #pragma once
 
-#include <VS1053.h>
+#include <Arduino.h>
+#include "midimessage.h"
 
 namespace Audio
 {
@@ -9,6 +10,5 @@ namespace Audio
     void SetVolume(uint8_t volume);
 
     void MidiDrumMode();
-    void MidiNoteOn(uint8_t channel, uint8_t note);
-    void MidiNoteOff(uint8_t channel, uint8_t note);
+    int Process(Midi::Message msg);
 }

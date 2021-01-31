@@ -25,9 +25,6 @@ void loop()
     Midi::Message msg = Midi::Read();
     Midi::PrintMessage(msg);
 
-    if(msg.info.infos.id == Midi::MessageType::NOTE_ON)
-      Audio::MidiNoteOn(0, msg.data1.infos.value);
-    else if(msg.info.infos.id == Midi::MessageType::NOTE_OFF)
-      Audio::MidiNoteOff(0, msg.data1.infos.value);
+    Audio::Process(msg);
   }
 }
