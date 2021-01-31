@@ -47,12 +47,19 @@ protected:
      * @param b Second value (operand byte)
      * @param c Third value (optional 2nd operand)
      */
-    void write(uint8_t a, uint8_t b, uint8_t c = 0)
+    void write(uint8_t a, uint8_t b, uint8_t c)
     {
         buffer[1] = a;
         buffer[3] = b;
         buffer[5] = c;
         player.playChunk(buffer, sizeof(buffer));
+    }
+
+    void write(uint8_t a, uint8_t b)
+    {
+        buffer[1] = a;
+        buffer[3] = b;
+        player.playChunk(buffer, 4);
     }
 
 public:
