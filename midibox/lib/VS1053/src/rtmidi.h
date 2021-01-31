@@ -132,4 +132,9 @@ public:
     {
         write(0xB0 | channel, 0x5B, value);
     }
+
+    void setSustainLevel(uint8_t channel, uint8_t value)
+    {
+        write(0xB0 | channel, 0x40, value);
+    }
 };
