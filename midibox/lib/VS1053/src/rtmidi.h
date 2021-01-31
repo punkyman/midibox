@@ -4,6 +4,17 @@
 #include "VS1053.h"
 #include "rtmidistart_plg.h"
 
+namespace Bank
+{
+    enum MIDI_BANK
+    {
+        DEFAULT_BANK = 0,
+        DRUMS_1 = 0x78,
+        DRUMS_2 = 0x7F,
+        MELODIC = 0x79,
+    };
+}
+
 /**
    * Play real-time MIDI.  Useful for using the VS1053 to make an
    * instrument.  Note that this implementation uses the SDI for
@@ -33,6 +44,9 @@ protected:
     }
 
 public:
+
+    static const char* InstrumentName(uint8_t number);
+
     /**
      * Construct from a VS1053 player
      *
@@ -83,22 +97,23 @@ public:
         write(channel | 0xE0, low, high);
     }
 
-    /**
-     * Choose the drums instrument
-     *
-     * @param channel Which channel to play the drums on
-     */
-    void selectDrums(uint8_t channel)
-    {
-        write(0xB0 | channel, 0, 0x78);
-        write(0xC0 | channel, 30);
-    }
-
     void selectInstrument(uint8_t channel, uint8_t instrument)
     {
         write(0xC0 | channel, instrument);
-       
     }
 
-    static const char* InstrumentName(uint8_t number);
+    void selectBank(uint8_t channel, uint8_t bank)
+    {
+        write(0xB0 | channel, 0, bank);
+    }
+
+    void setGlobalReverbDecay(uint8_t value)
+    {
+        write(0xB0, 0x0C, value);
+    }
+
+    void setReverbLevel(uint8_t channel, uint8_t value)
+    {
+        write(0xB0 | channel, 0x5B, value);
+    }
 };

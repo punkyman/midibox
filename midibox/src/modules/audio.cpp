@@ -24,11 +24,6 @@ void Audio::SetVolume(uint8_t volume)
     vs1053.setVolume(volume);
 }
 
-void Audio::MidiDrumMode()
-{
-    midi.selectDrums(0);
-}
-
 int Audio::Process(Midi::Message msg)
 {
     switch(msg.info.infos.id)
@@ -41,6 +36,9 @@ int Audio::Process(Midi::Message msg)
             return 0;
         case Midi::MessageType::PITCH_BEND:
             midi.pitchBend(msg.info.infos.channel, msg.data1.infos.value, msg.data2.infos.value);
+            return 0;
+        case Midi::MessageType::CONTROL_CHANGE:
+            midi.setReverbLevel(msg.info.infos.channel, msg.data2.infos.value);
             return 0;
         default:
             return -1;
