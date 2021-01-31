@@ -6,6 +6,19 @@
 
 namespace Bank
 {
+
+    // The standard banks are 0x79 and 0x78, but some MIDI songs seem to use bank number 0x7f for drums. The default bank depends on the channel number. Channel 10 defaults to percussion/drum bank, the other channels default to melodic.
+
+    // So, if you send Bank Select (HI) with:
+    // - 0 gives you the default bank depending on the channel. (0x78 for Channel 10, 0x79 for other channels.)
+    // - 0x7f is mapped to 0x78.
+    // - 0x78 and 0x79 give drum or melodic, respectively.
+    // - other values are ignored.
+
+    // Any channel can be melodic or drum bank. A lot of MIDI songs use two drum channels.
+
+    // Changing the bank of a channel does not affect notes that are already playing on the channel, so if you switch between melodic and drum bank, a single channel can have both playing at the same time.
+
     enum MIDI_BANK
     {
         DEFAULT_BANK = 0,
@@ -13,7 +26,7 @@ namespace Bank
         DRUMS_2 = 0x7F,
         MELODIC = 0x79,
     };
-}
+} // namespace Bank
 
 /**
    * Play real-time MIDI.  Useful for using the VS1053 to make an
@@ -43,7 +56,6 @@ protected:
     }
 
 public:
-
     /**
      * Construct from a VS1053 player
      *
@@ -91,7 +103,7 @@ public:
      */
     void pitchBend(uint8_t channel, uint8_t low, uint8_t high)
     {
-        write(channel | 0xE0, low, high);
+        write(0xE0 | channel, low, high);
     }
 
     void selectInstrument(uint8_t channel, uint8_t instrument)
