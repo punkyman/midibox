@@ -25,7 +25,6 @@ class RtMidi
 private:
     VS1053 &player;
     uint8_t buffer[6];
-    static const char* const INSTRUMENT_NAMES[];
 
 protected:
     /**
@@ -44,8 +43,6 @@ protected:
     }
 
 public:
-
-    static const char* InstrumentName(uint8_t number);
 
     /**
      * Construct from a VS1053 player

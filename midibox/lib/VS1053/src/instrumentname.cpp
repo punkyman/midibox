@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-const char* const BANKNAMES[] PROGMEM = {
+const char* const INSTRUMENT_NAMES[] PROGMEM = {
 "Acoustic Grand Piano",
 "Bright Acoustic Piano",
 "Electric Grand Piano",
@@ -130,3 +130,11 @@ const char* const BANKNAMES[] PROGMEM = {
 "Applause",
 "Gunshot",
 };
+
+const char* InstrumentName(uint8_t number)
+{
+    if(number > 127)
+        return PSTR("UNKNOWN BANK");
+
+    return INSTRUMENT_NAMES[number];
+}
