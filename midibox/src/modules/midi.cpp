@@ -55,6 +55,8 @@ Midi::Message Midi::Read()
 
 void Midi::PrintMessage(Message msg)
 {
+    Serial.println("CHANNEL");
+    Serial.println(msg.info.infos.channel);
     switch (msg.info.infos.id)
     {
     case Midi::MessageType::PROGRAM_CHANGE:
