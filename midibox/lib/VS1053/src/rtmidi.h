@@ -14,6 +14,7 @@ class RtMidi
 private:
     VS1053 &player;
     uint8_t buffer[6];
+    static const char* const BANKNAMES[];
 
 protected:
     /**
@@ -92,4 +93,6 @@ public:
         write(0xB0 | channel, 0, 0x78);
         write(0xC0 | channel, 30);
     }
+
+    static const char* BankName(uint8_t number);
 };
