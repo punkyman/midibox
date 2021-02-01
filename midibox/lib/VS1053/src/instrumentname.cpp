@@ -160,7 +160,7 @@ const char* const INSTRUMENT_NAMES[] PROGMEM =
 const char* InstrumentName(uint8_t number)
 {
     if(number > 127)
-        return PSTR("UNKNOWN BANK");
+        return PSTR("UNSUPPORTED INSTRUMENT");
 
     return (const char *) pgm_read_word(&INSTRUMENT_NAMES[number]);
 }
