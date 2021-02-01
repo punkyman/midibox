@@ -9,13 +9,10 @@ RX : 0
 SDA : 2
 SCL : 3
 
-INPUTS
-UP : 4
-DWN : 5
-LFT: 6
-RHT : 7
-MID : 8
-SET : 9
+ROTARY ENCODER :
+CLK : 7
+DATA : 8
+SW : 9
 
 VS1053
 CS : 10
