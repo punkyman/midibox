@@ -19,7 +19,7 @@ void setup()
 {
   Console::Init();
   Audio::Init();
-  //  Display::Init();
+  Display::Init();
   Midi::Init();
   Input::Init();
   //  Storage::Init();
@@ -43,8 +43,8 @@ void loop()
       instrument += 128;
     instrument %= 128;
 
-    printf_P(InstrumentName(instrument));
-    Serial.println();
+    Display::Clear();
+    Display::PrintLn_P(InstrumentName(instrument));
     Audio::SetInstrument(0, instrument);
   }
 }
