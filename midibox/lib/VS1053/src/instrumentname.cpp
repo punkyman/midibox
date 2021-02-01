@@ -146,8 +146,6 @@ const char Instr125[] PROGMEM = "Helicopter";
 const char Instr126[] PROGMEM = "Applause";
 const char Instr127[] PROGMEM = "Gunshot";
 
-const char Instr128[] PROGMEM = "PercussionInstrument";
-
 const char* const INSTRUMENT_NAMES[] PROGMEM = 
 { Instr000, Instr001, Instr002, Instr003, Instr004, Instr005, Instr006, Instr007, Instr008, Instr009, Instr010, Instr011, Instr012, Instr013, Instr014, Instr015, 
   Instr016, Instr017, Instr018, Instr019, Instr020, Instr021, Instr022, Instr023, Instr024, Instr025, Instr026, Instr027, Instr028, Instr029, Instr030, Instr031, 
@@ -156,7 +154,7 @@ const char* const INSTRUMENT_NAMES[] PROGMEM =
   Instr064, Instr065, Instr066, Instr067, Instr068, Instr069, Instr070, Instr071, Instr072, Instr073, Instr074, Instr075, Instr076, Instr077, Instr078, Instr079, 
   Instr080, Instr081, Instr082, Instr083, Instr084, Instr085, Instr086, Instr087, Instr088, Instr089, Instr090, Instr091, Instr092, Instr093, Instr094, Instr095, 
   Instr096, Instr097, Instr098, Instr099, Instr100, Instr101, Instr102, Instr103, Instr104, Instr105, Instr106, Instr107, Instr108, Instr109, Instr110, Instr111, 
-  Instr112, Instr113, Instr114, Instr115, Instr116, Instr117, Instr118, Instr119, Instr120, Instr121, Instr122, Instr123, Instr124, Instr125, Instr126, Instr127, Instr128
+  Instr112, Instr113, Instr114, Instr115, Instr116, Instr117, Instr118, Instr119, Instr120, Instr121, Instr122, Instr123, Instr124, Instr125, Instr126, Instr127,
 };
 
 const char* InstrumentName(uint8_t number)
@@ -164,5 +162,5 @@ const char* InstrumentName(uint8_t number)
     if(number > 127)
         return PSTR("UNKNOWN BANK");
 
-    return INSTRUMENT_NAMES[number];
+    return (const char *) pgm_read_word(&INSTRUMENT_NAMES[number]);
 }
