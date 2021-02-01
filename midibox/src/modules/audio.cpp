@@ -24,6 +24,12 @@ void Audio::SetVolume(uint8_t volume)
     vs1053.setVolume(volume);
 }
 
+void Audio::SetInstrument(uint8_t channel, uint8_t instrument)
+{
+    midi.selectInstrument(channel, instrument);
+}
+
+
 int Audio::Process(Midi::Message msg)
 {
     uint8_t control;
