@@ -36,7 +36,11 @@ void encoder_clear_readings()
 
 void encoder_read_values()
 {
+#if HARDWARE_INC == INC_CW
     encoder_scrolls = clickEncoder->getValue();
+#elif HARDWARE_INC == INC_CCW
+    encoder_scrolls = -clickEncoder->getValue();
+#endif
     encoder_switch = clickEncoder->getButton() == ClickEncoder::Clicked;
 }
 
