@@ -19,7 +19,7 @@ void encoder_interrupt()
 
 void encoder_init(uint8_t clock_pin, uint8_t data_pin, uint8_t switch_pin)
 {
-    clickEncoder = new ClickEncoder(clock_pin, data_pin, switch_pin);
+    clickEncoder = new ClickEncoder(clock_pin, data_pin, switch_pin, HARDWARE_STEPS);
     clickEncoder->setAccelerationEnabled(false);
 
     encoder_scrolls = 0;

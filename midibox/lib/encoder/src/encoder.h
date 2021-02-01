@@ -2,6 +2,7 @@
 #include <Arduino.h>
 
 #define USE_CLICK_ENCODER
+#define HARDWARE_STEPS 4
 
 extern volatile int8_t encoder_scrolls;
 extern bool encoder_switch;
