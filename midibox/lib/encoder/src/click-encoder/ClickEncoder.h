@@ -17,6 +17,8 @@
 #include <stdint.h>
 #include "Arduino.h"
 
+typedef uint32_t WiringPinMode;
+
 // ----------------------------------------------------------------------------
 
 #define ENC_NORMAL        (1 << 1)   // use Peter Danneger's decoder

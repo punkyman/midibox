@@ -1,5 +1,6 @@
 #include "encoder.h"
-#include <hal.h>
+#include <Arduino.h>
+#include <TimerOne.h>
 
 volatile int8_t encoder_scrolls;
 bool encoder_switch;
@@ -8,7 +9,7 @@ bool encoder_switch;
 
 #include "click-encoder/ClickEncoder.h"
 
-HardwareTimer timer(1);
+TimerOne timer;
 ClickEncoder* clickEncoder;
 
 void encoder_interrupt()
@@ -25,7 +26,7 @@ void encoder_init(uint8_t clock_pin, uint8_t data_pin, uint8_t switch_pin)
     encoder_switch = false;
 
     timer.setPeriod(1000);
-    timer.attachCompare1Interrupt(encoder_interrupt); 
+    timer.attachInterrupt(encoder_interrupt); 
 }
 
 void encoder_clear_readings()
