@@ -157,10 +157,10 @@ const char* const INSTRUMENT_NAMES[] PROGMEM =
   Instr112, Instr113, Instr114, Instr115, Instr116, Instr117, Instr118, Instr119, Instr120, Instr121, Instr122, Instr123, Instr124, Instr125, Instr126, Instr127,
 };
 
-const char* InstrumentName(uint8_t number)
+const __FlashStringHelper * InstrumentName(uint8_t number)
 {
     if(number > 127)
-        return PSTR("UNSUPPORTED INSTRUMENT");
+        return F("UNSUPPORTED INSTRUMENT");
 
-    return (const char *) pgm_read_word(&INSTRUMENT_NAMES[number]);
+    return (const __FlashStringHelper *) pgm_read_word(&INSTRUMENT_NAMES[number]);
 }

@@ -2,4 +2,4 @@
 
 #include <Arduino.h>
 
-const char* InstrumentName(uint8_t number);
+const __FlashStringHelper * InstrumentName(uint8_t number);

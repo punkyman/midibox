@@ -35,7 +35,7 @@ void MidiLoop()
     instrument %= 128;
 
     Display::Clear();
-    Display::PrintLn_P(InstrumentName(instrument));
+    Display::PrintLn(InstrumentName(instrument));
     Audio::MidiSetInstrument(0, instrument);
   }
 }

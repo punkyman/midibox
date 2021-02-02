@@ -36,16 +36,17 @@ void Display::PrintLn(const char *str)
     }
 }
 
-void Display::PrintLn_P(const char *str)
+void Display::PrintLn(const __FlashStringHelper *str)
 {
-    size_t length = strlen_P(str);
+    const char* pstr = (const char*) str;
+    size_t length = strlen_P(pstr);
 
     lcd.setCursor(0, 0);
-    lcd.print((const __FlashStringHelper *)str);
+    lcd.print(str);
 
     if (length > LCD_NUM_COLS)
     {
         lcd.setCursor(0, 1);
-        lcd.print((const __FlashStringHelper *)&str[LCD_NUM_COLS]);
+        lcd.print((const __FlashStringHelper *)&pstr[LCD_NUM_COLS]);
     }
 }

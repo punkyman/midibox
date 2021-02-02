@@ -1,4 +1,5 @@
 #pragma once
+#include <Arduino.h>
 
 namespace Display
 {
@@ -8,5 +9,5 @@ namespace Display
 
     void PrintLn(const char* str);
 
-    void PrintLn_P(const char* str);
+    void PrintLn(const __FlashStringHelper * str);
 }
