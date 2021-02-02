@@ -1,7 +1,7 @@
 #include "storage.h"
 #include <SD.h>
 #include <SPI.h>
-#include "hardware.h"
+#include "pins.h"
 
 String* files = nullptr;
 uint8_t filesNumber = 0;

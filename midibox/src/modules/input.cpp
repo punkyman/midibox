@@ -1,6 +1,6 @@
 #include "input.h"
 #include <Arduino.h>
-#include "hardware.h"
+#include "pins.h"
 #include <encoder.h>
 
 void Input::Init()

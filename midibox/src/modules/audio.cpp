@@ -1,5 +1,5 @@
 #include "audio.h"
-#include "hardware.h"
+#include "pins.h"
 #include <SPI.h>
 #include <VS1053.h>
 #include <rtmidi.h>
