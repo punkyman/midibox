@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Midi
+namespace MidiMessage
 {
     namespace MessageType
     {
@@ -44,4 +44,7 @@ namespace Midi
         MessageData data1;
         MessageData data2;
     };
+
+    void Print(Message msg);
+    int MessageLength(int message_type);
 } // namespace Midi

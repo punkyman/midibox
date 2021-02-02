@@ -8,43 +8,22 @@
 #include "modules/storage.h"
 #include "modules/console.h"
 
-#include <instrumentname.h>
-
-int8_t scrolls = 0;
-bool click = false;
-
-int8_t instrument = 0;
+#include "midimode.h"
 
 void setup()
 {
   Console::Init();
-  Audio::Init();
   Display::Init();
   Midi::Init();
   Input::Init();
   //  Storage::Init();
+
+  Audio::Init();
+
+  MidiSetup();
 }
 
 void loop()
 {
-  while (Midi::Available())
-  {
-    Midi::Message msg = Midi::Read();
-    Midi::PrintMessage(msg);
-
-    Audio::Process(msg);
-  }
-
-  Input::Read(&scrolls, &click);
-  if(scrolls != 0)
-  {
-    instrument += scrolls;
-    if(instrument < 0)
-      instrument += 128;
-    instrument %= 128;
-
-    Display::Clear();
-    Display::PrintLn_P(InstrumentName(instrument));
-    Audio::SetInstrument(0, instrument);
-  }
+  MidiLoop();
 }

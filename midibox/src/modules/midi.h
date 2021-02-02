@@ -1,11 +1,9 @@
 #pragma once
-#include "midimessage.h"
+#include <midimessage.h>
 
 namespace Midi
 {
     void Init();
     bool Available();
-    Message Read();
-
-    void PrintMessage(Message msg);
+    MidiMessage::Message Read();
 } // namespace Midi

@@ -15,8 +15,17 @@ void Audio::Init()
     digitalWrite(PIN_AUDIO_SDCARD_CS,HIGH);
 
     SPI.begin();
+}
+
+void Audio::MidiMode()
+{
     vs1053.begin();
     midi.begin();
+}
+
+void Audio::DataMode()
+{
+    vs1053.begin();
 }
 
 void Audio::SetVolume(uint8_t volume)
@@ -24,28 +33,28 @@ void Audio::SetVolume(uint8_t volume)
     vs1053.setVolume(volume);
 }
 
-void Audio::SetInstrument(uint8_t channel, uint8_t instrument)
+void Audio::MidiSetInstrument(uint8_t channel, uint8_t instrument)
 {
     midi.selectInstrument(channel, instrument);
 }
 
 
-int Audio::Process(Midi::Message msg)
+int Audio::MidiProcess(MidiMessage::Message msg)
 {
     uint8_t control;
 
     switch(msg.info.infos.id)
     {
-        case Midi::MessageType::NOTE_ON:
+        case MidiMessage::MessageType::NOTE_ON:
             midi.noteOn(msg.info.infos.channel, msg.data1.infos.value, volume);
             return 0;
-        case Midi::MessageType::NOTE_OFF:
+        case MidiMessage::MessageType::NOTE_OFF:
             midi.noteOff(msg.info.infos.channel, msg.data1.infos.value);
             return 0;
-        case Midi::MessageType::PITCH_BEND:
+        case MidiMessage::MessageType::PITCH_BEND:
             midi.pitchBend(msg.info.infos.channel, msg.data1.infos.value, msg.data2.infos.value);
             return 0;
-        case Midi::MessageType::CONTROL_CHANGE:
+        case MidiMessage::MessageType::CONTROL_CHANGE:
             control = msg.data1.infos.value;
             if(control == 1) // mod wheel
             {
