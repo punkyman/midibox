@@ -10,10 +10,11 @@ bool click = false;
 
 int8_t instrument = 0;
 
-
 void MidiSetup()
 {
-    Audio::MidiMode();
+  Audio::MidiMode();
+
+  Display::PrintLn(InstrumentName(instrument));
 }
 
 void MidiLoop()
